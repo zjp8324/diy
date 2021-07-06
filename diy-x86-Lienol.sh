@@ -10,7 +10,7 @@
 #sed -i '5s/Lienol/sypopo/g' ./feeds.conf.default
 
 echo '修改网关地址'
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 
 echo '修改时区'
 sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
@@ -25,7 +25,7 @@ sed -i "s/SyPopo$/SyPopo $date/g" package/base-files/files/etc/banner
 
 echo '添加软件包'
 #sed -i 's/0.32.1/0.33.0/g' package/diy/frp/Makefile
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 rm -rf feeds/packages/libs/libcap
@@ -112,7 +112,7 @@ uci commit dhcp
 #uci set network.wan.password='password'
 uci set network.wan.ifname='eth3'
 uci set network.wan6.ifname='eth3'
-uci set network.lan.ipaddr='192.168.2.1'
+uci set network.lan.ipaddr='192.168.5.1'
 uci set network.lan.proto='static'
 uci set network.lan.type='bridge'
 uci set network.lan.ifname='eth0 eth1 eth2'
